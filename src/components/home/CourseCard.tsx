@@ -1,36 +1,56 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Star, Clock, BookOpen, ArrowUpRight } from "lucide-react";
+import { Star } from "lucide-react";
 
 export interface Course {
   id: string;
   title: string;
   category: string;
-  instructor: {
-    name: string;
-    avatar: string;
-    role?: string;
-  };
+  instructorName?: string;
   thumbnail: string;
   rating: number;
-  reviewsCount: number;
   duration: string;
   lessonsCount: number;
+  commentsCount?: number;
   price: number;
-  originalPrice?: number;
-  badge?: string;
+  pricePeriod?: string;
+  level?: string;
+  studentAvatars?: string[];
+  enrolledCount?: string;
 }
 
 interface CourseCardProps {
   course: Course;
 }
 
+const SignalIcon: React.FC<{ className?: string }> = ({ className = "w-3 h-3" }) => (
+  <svg
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    className={className}
+    aria-hidden="true"
+  >
+    <rect x="2" y="10" width="2.5" height="5" rx="0.75" />
+    <rect x="6.5" y="6" width="2.5" height="9" rx="0.75" />
+    <rect x="11" y="2" width="2.5" height="13" rx="0.75" />
+  </svg>
+);
+
+const defaultAvatars = [
+  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80",
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80",
+  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80",
+];
+
 export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
+  const avatars = course.studentAvatars && course.studentAvatars.length > 0 ? course.studentAvatars : defaultAvatars;
+
   return (
-    <div className="group flex flex-col bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.09)] transition-all duration-300 hover:-translate-y-1">
-      {/* Thumbnail Container */}
-      <div className="relative w-full aspect-[16/10] overflow-hidden bg-gray-100">
+    <div className="group bg-white rounded-[22px] border border-gray-200/90 p-3 sm:p-3.5 hover:shadow-lg hover:border-gray-300 transition-all duration-300 flex flex-col justify-between">
+      {/* Thumbnail with overlay badges */}
+      <div className="relative w-full aspect-[16/10.5] rounded-[16px] overflow-hidden bg-gray-100 mb-3.5">
         <Image
           src={course.thumbnail}
           alt={course.title}
@@ -39,71 +59,85 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
 
-        {/* Category Badge */}
-        <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-xs font-semibold text-gray-800 px-3 py-1 rounded-full shadow-sm">
-          {course.category}
-        </span>
+        {/* Subtle dark gradient behind badges for contrast */}
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/50 via-black/20 to-transparent pointer-events-none" />
 
-        {course.badge && (
-          <span className="absolute top-3 right-3 bg-[#CCFF00] text-black text-xs font-bold px-2.5 py-1 rounded-full shadow-sm">
-            {course.badge}
-          </span>
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="flex-1 flex flex-col p-5">
-        {/* Meta info: duration & lessons */}
-        <div className="flex items-center gap-4 text-xs font-medium text-gray-400 mb-2.5">
-          <span className="flex items-center gap-1">
-            <Clock className="w-3.5 h-3.5 text-gray-400" />
-            {course.duration}
-          </span>
-          <span className="flex items-center gap-1">
-            <BookOpen className="w-3.5 h-3.5 text-gray-400" />
+        {/* Frosted badges row */}
+        <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center gap-1.5 z-10 overflow-hidden">
+          <span className="px-2.5 py-1 rounded-full bg-white/25 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-[11px] font-medium leading-none whitespace-nowrap shadow-sm">
             {course.lessonsCount} Lessons
           </span>
+          <span className="px-2.5 py-1 rounded-full bg-white/25 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-[11px] font-medium leading-none whitespace-nowrap shadow-sm">
+            {course.duration}
+          </span>
+          <span className="px-2.5 py-1 rounded-full bg-white/25 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-[11px] font-medium leading-none whitespace-nowrap shadow-sm">
+            {course.commentsCount ?? 59} Comments
+          </span>
         </div>
+      </div>
 
-        {/* Title */}
-        <h3 className="font-bold text-gray-900 text-base leading-snug line-clamp-2 group-hover:text-blue-600 transition-colors">
-          <Link href={`#course-${course.id}`} className="hover:underline">
-            {course.title}
-          </Link>
-        </h3>
-
-        {/* Instructor */}
-        <div className="flex items-center gap-2.5 mt-3 mb-4">
-          <div className="relative w-7 h-7 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
-            <Image
-              src={course.instructor.avatar}
-              alt={course.instructor.name}
-              fill
-              className="object-cover"
-            />
-          </div>
-          <span className="text-xs font-medium text-gray-600">{course.instructor.name}</span>
-        </div>
-
-        {/* Divider */}
-        <div className="w-full h-px bg-gray-100 my-auto" />
-
-        {/* Bottom Bar: Rating + Price */}
-        <div className="flex items-center justify-between pt-3">
-          <div className="flex items-center gap-1">
-            <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-            <span className="text-xs font-bold text-gray-900">{course.rating.toFixed(1)}</span>
-            <span className="text-xs text-gray-400">({course.reviewsCount})</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            {course.originalPrice && (
-              <span className="text-xs text-gray-400 line-through">${course.originalPrice}</span>
-            )}
-            <span className="text-base font-extrabold text-blue-600">${course.price}</span>
-            <div className="w-7 h-7 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-[#CCFF00] group-hover:text-black transition-colors ml-1">
-              <ArrowUpRight className="w-4 h-4" />
+      {/* Course Info */}
+      <div className="px-0.5 flex-1 flex flex-col justify-between">
+        <div>
+          {/* Title & Rating */}
+          <div className="flex items-start justify-between gap-2">
+            <h3 className="font-bold text-[#101828] text-base leading-snug line-clamp-1 group-hover:text-blue-600 transition-colors">
+              <Link href={`#course-${course.id}`}>
+                {course.title}
+              </Link>
+            </h3>
+            <div className="flex items-center gap-1 text-[#98A2B3] text-xs font-semibold flex-shrink-0 pt-0.5">
+              <span>{course.rating.toFixed(1)}</span>
+              <Star className="w-3.5 h-3.5 fill-[#98A2B3] text-[#98A2B3]" />
             </div>
+          </div>
+
+          {/* Instructor */}
+          <div className="text-xs text-[#667085] mt-1 mb-3">
+            by{" "}
+            <span className="text-[#3B71F7] font-medium hover:underline cursor-pointer">
+              {course.instructorName ?? "purepearl studio"}
+            </span>
+          </div>
+        </div>
+
+        <div>
+          {/* Level badge & Enrolled Students Stack */}
+          <div className="flex items-center justify-between gap-2 mb-3.5">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F2F4F7] text-[#344054] text-xs font-medium">
+              <SignalIcon className="w-3 h-3 text-[#667085]" />
+              <span>{course.level ?? "Beginner"}</span>
+            </div>
+
+            <div className="flex items-center -space-x-1.5">
+              {avatars.slice(0, 4).map((avatar, idx) => (
+                <div
+                  key={idx}
+                  className="relative w-6 h-6 rounded-full overflow-hidden ring-2 ring-white flex-shrink-0"
+                >
+                  <Image
+                    src={avatar}
+                    alt="Student"
+                    fill
+                    sizes="24px"
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+              <div className="relative w-6 h-6 rounded-full bg-[#D4F82C] text-[#101828] ring-2 ring-white flex items-center justify-center text-[10px] font-bold flex-shrink-0">
+                {course.enrolledCount ?? "26+"}
+              </div>
+            </div>
+          </div>
+
+          {/* Price */}
+          <div className="flex items-baseline">
+            <span className="text-[#2E5CFF] font-extrabold text-lg leading-none">
+              ${course.price}
+            </span>
+            <span className="text-[#98A2B3] text-[11px] ml-0.5 font-normal">
+              {course.pricePeriod ?? "/Lifetime"}
+            </span>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import React from "react";
 import { HeroSection } from "./HeroSection";
 import { PartnerBanner } from "./PartnerBanner";
 import { TopCoursesSection } from "./TopCoursesSection";
-import { WhyChooseUsSection } from "./WhyChooseUsSection";
+import { LearningPathsSection } from "./LearningPathsSection";
 import { CommunityStatsSection } from "./CommunityStatsSection";
 import { TestimonialsSection } from "./TestimonialsSection";
 
@@ -20,8 +20,8 @@ function Home() {
       {/* 3. Top Courses Grid with Categories */}
       <TopCoursesSection />
 
-      {/* 4. Why ByteSpace / Feature Highlights */}
-      <WhyChooseUsSection />
+      {/* 4. Explore Diverse Learning Paths */}
+      <LearningPathsSection />
 
       {/* 5. Community Stats & CTA Banner */}
       <CommunityStatsSection />
