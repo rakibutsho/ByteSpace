@@ -22,11 +22,11 @@ export const Logo: React.FC<LogoProps> = ({ variant = "light", className }) => {
       </div>
       <span
         className={cn(
-          "font-bold text-xl sm:text-2xl tracking-tight transition-colors",
+          "font-bold text-xl sm:text-2xl tracking-tight transition-colors font-clash",
           variant === "light" ? "text-white" : "text-gray-900 group-hover:text-blue-600"
         )}
       >
-        Byte<span className="text-[#CCFF00]">Space</span>
+        ByteSpace
       </span>
     </Link>
   );

@@ -5,12 +5,14 @@ import { Suspense } from "react";
 import ReduxProvider from "@/redux/Provider";
 import Loading from "@/components/Others/Loader/Loading";
 import {
+  clashDisplay,
   gravitas,
   lobster,
   openSans,
   playfair,
   roboto,
   rowdies,
+  satoshi,
 } from "@/fonts/Fonts";
 
 export const metadata: Metadata = {
@@ -26,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${openSans.variable} ${playfair.variable} ${lobster.variable} ${roboto.variable} ${gravitas.variable} ${rowdies.variable} antialiased`}
+        className={`${clashDisplay.variable} ${satoshi.variable} ${openSans.variable} ${playfair.variable} ${lobster.variable} ${roboto.variable} ${gravitas.variable} ${rowdies.variable} font-sans antialiased`}
       >
         <Suspense fallback={<Loading />}>
           <ReduxProvider>

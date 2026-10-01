@@ -103,7 +103,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] xl:text-[80px]
-                       font-extrabold tracking-tight leading-[1.07] max-w-5xl text-white"
+                       font-extrabold tracking-tight leading-[1.07] max-w-5xl text-white font-satoshi"
           >
             Get Access to Hundreds <br />
             Courses Available
@@ -113,7 +113,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.15 }}
-            className="mt-5 sm:mt-6 text-sm sm:text-base md:text-lg text-white/85 max-w-2xl font-normal leading-relaxed"
+            className="mt-5 sm:mt-6 text-sm sm:text-base md:text-lg text-white/85 max-w-4xl font-satoshi leading-relaxed"
           >
             Unlock your creativity, gain valuable knowledge, and grow your business with our wide range of courses.
           </motion.p>

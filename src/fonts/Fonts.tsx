@@ -1,3 +1,4 @@
+import localFont from "next/font/local";
 import {
   Gravitas_One,
   Lobster_Two,
@@ -6,6 +7,20 @@ import {
   Roboto,
   Rowdies,
 } from "next/font/google";
+
+export const clashDisplay = localFont({
+  src: "../../public/fonts/ClashDisplay-Variable.woff2",
+  variable: "--font-clash",
+  display: "swap",
+  weight: "200 700",
+});
+
+export const satoshi = localFont({
+  src: "../../public/fonts/Satoshi-Variable.woff2",
+  variable: "--font-satoshi",
+  display: "swap",
+  weight: "300 900",
+});
 
 export const openSans = Open_Sans({
   subsets: ["latin"],
