@@ -1,67 +1,99 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { HomeIcon, InfoIcon, Mail, Menu, Settings } from "lucide-react";
-import Link from "next/link";
-import React, { useState } from "react";
 
-const navigationLinks = [
-  { name: "Home", href: "/", icon: HomeIcon },
-  { name: "About", href: "/about", icon: InfoIcon },
-  { name: "Services", href: "/services", icon: Settings },
-  { name: "Contact", href: "/contact", icon: Mail },
+import React, { useState } from "react";
+import Link from "next/link";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu, ShoppingBag } from "lucide-react";
+import { Logo } from "./Logo";
+
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Courses", href: "#courses" },
+  { name: "Creators", href: "#creators" },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  return (
-    //main header
-    <header className="sticky top-0 z-50 w-full mx-auto border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-      {/*container for navbar content */}
-      <div className="w-full max-w-7xl mx-auto flex items-center justify-between p-4">
-        {/*logo section*/}
-        <Link href="/" className="text-2xl font-bold">
-          <span className="text-2xl font-bold">Logo</span>
-        </Link>
 
-        {/*navigation links*/}
-        <nav className="hidden md:flex md:items-center md:gap-6">
-          {navigationLinks.map((link) => (
+  return (
+    <header className="absolute top-0 left-0 right-0 z-50 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        {/* Logo */}
+        <Logo variant="light" />
+
+        {/* Center Nav Links */}
+        <nav className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="flex items-center justify-center text-sm font-medium transition-colors hover:text-primary gap-2"
+              className="text-white/90 hover:text-white font-medium text-sm transition-colors relative py-1 hover:after:w-full after:w-0 after:h-0.5 after:bg-[#CCFF00] after:absolute after:bottom-0 after:left-0 after:transition-all"
             >
-              {link.icon && <link.icon className="w-5 h-5" />}
               {link.name}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
-          <Button className="hidden md:inline-flex cursor-pointer" size="sm">
-            Get Started
-          </Button>
+        {/* Right Actions */}
+        <div className="flex items-center gap-5 sm:gap-6">
+          <Link
+            href="/auth/signin"
+            className="text-white font-medium text-sm hover:text-[#CCFF00] transition-colors hidden sm:block"
+          >
+            Sign In
+          </Link>
+          <Link
+            href="/auth/signup"
+            className="text-white font-medium text-sm hover:text-[#CCFF00] transition-colors"
+          >
+            Join Us
+          </Link>
 
+          <Link
+            href="/cart"
+            aria-label="Cart"
+            className="text-white hover:text-[#CCFF00] transition-colors p-1"
+          >
+            <ShoppingBag className="w-5 h-5 stroke-[2]" />
+          </Link>
+
+          {/* Mobile Sheet Navigation */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
-              </Button>
+            <SheetTrigger asChild className="md:hidden text-white">
+              <button aria-label="Open Menu" className="p-1 hover:text-[#CCFF00] transition-colors">
+                <Menu className="w-6 h-6" />
+              </button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <nav className="border-t flex flex-col gap-6 mt-10 px-4 pt-6">
-                {navigationLinks.map((link) => (
+            <SheetContent side="right" className="w-[280px] bg-[#0047FF] text-white border-blue-600">
+              <div className="mt-8 mb-6">
+                <Logo variant="light" />
+              </div>
+              <nav className="flex flex-col gap-4">
+                {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="flex items-start justify-baseline font-medium transition-colors hover:text-primary gap-4"
+                    onClick={() => setIsOpen(false)}
+                    className="text-lg font-medium text-white/90 hover:text-[#CCFF00] transition-colors"
                   >
-                    {link.icon && <link.icon className="w-6 h-6" />}
                     {link.name}
                   </Link>
                 ))}
-                <Button className="mt-4 w-full">Get Started</Button>
+                <hr className="border-blue-500/40 my-2" />
+                <Link
+                  href="/auth/signin"
+                  onClick={() => setIsOpen(false)}
+                  className="text-white/90 hover:text-white font-medium"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/auth/signup"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex justify-center items-center py-2.5 px-4 rounded-full bg-[#CCFF00] text-black font-semibold text-sm hover:bg-[#d9ff33] transition"
+                >
+                  Join Us
+                </Link>
               </nav>
             </SheetContent>
           </Sheet>

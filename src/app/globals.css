@@ -41,7 +41,9 @@
   --radius-xl: calc(var(--radius) + 4px);
 
   /* Import Custom Font */
-  --font-sans: var(--font-open-sans);
+  --font-sans: var(--font-satoshi), var(--font-open-sans), sans-serif;
+  --font-satoshi: var(--font-satoshi), sans-serif;
+  --font-clash: var(--font-clash), sans-serif;
   --font-serif: var(--font-playfair);
   --font-mono: var(--font-roboto);
 
@@ -127,5 +129,34 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-satoshi), sans-serif;
   }
+}
+
+.font-clash {
+  font-family: var(--font-clash), sans-serif;
+}
+
+.font-satoshi {
+  font-family: var(--font-satoshi), sans-serif;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 45s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

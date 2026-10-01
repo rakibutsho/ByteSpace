@@ -5,13 +5,17 @@ import { Suspense } from "react";
 import ReduxProvider from "@/redux/Provider";
 import Loading from "@/components/Others/Loader/Loading";
 import {
+  clashDisplay,
   gravitas,
   lobster,
   openSans,
   playfair,
   roboto,
   rowdies,
+  satoshi,
 } from "@/fonts/Fonts";
+import { Navbar } from "@/components/common/Navbar/Navbar";
+import { Footer } from "@/components/common/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,11 +30,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${openSans.variable} ${playfair.variable} ${lobster.variable} ${roboto.variable} ${gravitas.variable} ${rowdies.variable} antialiased`}
+        className={`${clashDisplay.variable} ${satoshi.variable} ${openSans.variable} ${playfair.variable} ${lobster.variable} ${roboto.variable} ${gravitas.variable} ${rowdies.variable} font-sans antialiased`}
       >
         <Suspense fallback={<Loading />}>
+
+
+
           <ReduxProvider>
+            {/* <Navbar /> */}
             {children}
+            {/* <Footer /> */}
             <Toaster richColors position="top-right" />
           </ReduxProvider>
         </Suspense>

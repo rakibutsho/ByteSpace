@@ -1,121 +1,120 @@
-import { FacebookIcon, Github, Linkedin, Mail } from "lucide-react";
-import Link from "next/link";
+"use client";
+
 import React from "react";
+import Link from "next/link";
+import { Logo } from "../Navbar/Logo";
 
-const footerLinks = {
-  product: [
-    { name: "Features", href: "/features" },
-    { name: "Pricing", href: "/pricing" },
-    { name: "Documentation", href: "/docs" },
-    { name: "API", href: "/api" },
-  ],
-  company: [
-    { name: "About", href: "/about" },
-    { name: "Blog", href: "/blog" },
-    { name: "Careers", href: "/careers" },
-    { name: "Contact", href: "/contact" },
-  ],
-  legal: [
-    { name: "Privacy", href: "/privacy" },
-    { name: "Terms", href: "/terms" },
-    { name: "Cookie Policy", href: "/cookies" },
-    { name: "Licenses", href: "/licenses" },
-  ],
-};
-
-const socialLinks = [
-  { name: "Facebook", href: "#", icon: FacebookIcon },
-  { name: "Github", href: "#", icon: Github },
-  { name: "LinkedIn", href: "#", icon: Linkedin },
-  { name: "Email", href: "#", icon: Mail },
+const footerNavColumns = [
+  {
+    links: [
+      { name: "Featured Courses", href: "#courses" },
+      { name: "Featured Categories", href: "#categories" },
+      { name: "Business", href: "#business" },
+      { name: "IT", href: "#it" },
+      { name: "Design", href: "#design" },
+    ],
+  },
+  {
+    links: [
+      { name: "Development", href: "#development" },
+      { name: "Marketing", href: "#marketing" },
+      { name: "Photography", href: "#photography" },
+      { name: "Finance", href: "#finance" },
+      { name: "Sport", href: "#sport" },
+    ],
+  },
+  {
+    links: [
+      { name: "Become a Creator", href: "#creator" },
+      { name: "Affiliate Program", href: "#affiliate" },
+      { name: "Contact", href: "#contact" },
+      { name: "Help", href: "#help" },
+      { name: "About", href: "#about" },
+    ],
+  },
 ];
 
-export const Footer = () => {
+const legalLinks = [
+  { name: "Privacy Policy", href: "#privacy" },
+  { name: "Terms of Service", href: "#terms" },
+  { name: "Cookies Settings", href: "#cookies" },
+];
+
+export const Footer: React.FC = () => {
   return (
-    // Footer Component
-    <footer className="border-t bg-background w-full mx-auto">
-      {/* Main Div */}
-      <div className="max-w-7xl mx-auto py-12 md-py-16 px-6">
-        {/* Logo and description */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="text-lg font-bold">
-              <span className="text-2xl font-bold">Logo</span>
-            </Link>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Building exceptional digital experiences that make a difference.
+    <footer className="bg-white text-gray-900 border-t border-gray-100">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-16 sm:pt-20 pb-10">
+        <div className="flex flex-col lg:flex-row justify-between gap-12 lg:gap-16 xl:gap-24">
+          {/* Brand & Newsletter Column */}
+          <div className="max-w-xl">
+            <Logo variant="dark" />
+            
+            <p className="mt-5 text-sm sm:text-base text-gray-700 leading-relaxed font-satoshi">
+              Stay Up to date with our latest features and releases by joining our newsletter.
             </p>
-            {/* Social Links */}
-            <div className="flex gap-4 mt-6">
-              {socialLinks.map((social) => (
-                <Link
-                  key={social.name}
-                  href={social.href}
-                  className="mr-4 text-muted-foreground hover:text-primary transition"
-                >
-                  <social.icon className="h-5 w-5" />
-                  <span className="sr-only">{social.name}</span>
-                </Link>
-              ))}
-            </div>
+
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 max-w-lg"
+            >
+              <div className="relative flex-1">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full px-6 py-3 rounded-full border border-gray-300 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#CCFF00] focus:border-gray-400 font-satoshi transition-all bg-white"
+                />
+              </div>
+              <button
+                type="submit"
+                className="bg-[#CCFF00] hover:bg-[#bcf200] active:scale-95 transition-all text-black font-semibold text-sm px-8 py-3 rounded-full cursor-pointer font-satoshi shadow-xs whitespace-nowrap"
+              >
+                Search
+              </button>
+            </form>
+
+            <p className="mt-4 text-xs text-gray-500 leading-relaxed font-satoshi max-w-md">
+              By subscribing, you agree to our{" "}
+              <Link href="#privacy" className="underline hover:text-gray-800 transition-colors">
+                Privacy Policy
+              </Link>{" "}
+              and consent to receive updates from our company.
+            </p>
           </div>
 
-          {/* Footer Links */}
-          <div>
-            <h3 className="font-semibold mb-4">Product</h3>
-            <ul className="space-y-3">
-              {footerLinks.product.map((productLink) => (
-                <li key={productLink.name}>
-                  <Link
-                    href={productLink.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {productLink.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company Links */}
-          <div>
-            <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((companyLink) => (
-                <li key={companyLink.name}>
-                  <Link
-                    href={companyLink.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {companyLink.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          {/* Legal Links */}
-          <div>
-            <h3 className="font-semibold mb-4">Legal</h3>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((legalLink) => (
-                <li key={legalLink.name}>
-                  <Link
-                    href={legalLink.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {legalLink.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Navigation Links Columns */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-12 lg:gap-14 xl:gap-20">
+            {footerNavColumns.map((col, idx) => (
+              <ul key={idx} className="space-y-4">
+                {col.links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-sm sm:text-[15px] text-gray-800 hover:text-blue-600 font-normal font-satoshi transition-colors inline-block"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ))}
           </div>
         </div>
 
-        {/* copyright  */}
-        <div className="mt-12 pt-4 border-t">
-          <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()}. All rights reserved.
-          </p>
+        {/* Bottom Legal / Copyright Bar */}
+        <div className="mt-16 sm:mt-20 pt-8 border-t border-gray-200/90 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-gray-600 font-satoshi">
+          <p>© 2023 ByteSpace. All rights reserved.</p>
+
+          <div className="flex items-center gap-6 sm:gap-8">
+            {legalLinks.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-gray-700 hover:text-black transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

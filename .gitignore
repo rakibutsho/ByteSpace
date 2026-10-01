@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.agent/
+figma_thumbnail_1200.png
+figma_thumbnail_1280.png
+guideline.md
+PROJECT_HANDOVER.md
