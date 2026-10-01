@@ -37,9 +37,9 @@ export default function RootLayout({
 
 
           <ReduxProvider>
-            <Navbar />
+            {/* <Navbar /> */}
             {children}
-            <Footer />
+            {/* <Footer /> */}
             <Toaster richColors position="top-right" />
           </ReduxProvider>
         </Suspense>
