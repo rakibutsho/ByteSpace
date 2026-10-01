@@ -31,7 +31,6 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
-# .env*
 
 # vercel
 .vercel
@@ -44,3 +43,4 @@ figma_thumbnail_1200.png
 figma_thumbnail_1280.png
 guideline.md
 PROJECT_HANDOVER.md
+config.bat
