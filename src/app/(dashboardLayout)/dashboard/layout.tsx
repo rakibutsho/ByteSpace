@@ -1,0 +1,24 @@
+import AppHeader from "@/components/dashboardLayout/AppHeader";
+import { AppSidebar } from "@/components/dashboardLayout/AppSidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import React, { ReactNode } from "react";
+
+const DashboardLayout = ({ children }: { children: ReactNode }) => {
+  return (
+    <div className="flex h-screen overflow-hidden">
+      <SidebarProvider defaultOpen={true} className="flex h-full">
+        <AppSidebar />
+        <SidebarInset className="flex flex-col flex-1">
+          <AppHeader />
+          <div className="flex-1 overflow-y-auto">
+            <div className="flex flex-col gap-4 p-6">
+              {children}
+            </div>
+          </div>
+        </SidebarInset>
+      </SidebarProvider>
+    </div>
+  );
+};
+
+export default DashboardLayout;
