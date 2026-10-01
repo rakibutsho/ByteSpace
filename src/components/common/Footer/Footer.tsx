@@ -1,121 +1,151 @@
-import { FacebookIcon, Github, Linkedin, Mail } from "lucide-react";
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
+import { Facebook, Github, Linkedin, Twitter, Mail, ArrowRight } from "lucide-react";
+import { Logo } from "../Navbar/Logo";
 
 const footerLinks = {
-  product: [
-    { name: "Features", href: "/features" },
-    { name: "Pricing", href: "/pricing" },
-    { name: "Documentation", href: "/docs" },
-    { name: "API", href: "/api" },
+  explore: [
+    { name: "Top Courses", href: "#courses" },
+    { name: "Design Mentorship", href: "#" },
+    { name: "Full-Stack Bootcamp", href: "#" },
+    { name: "Certifications", href: "#" },
+    { name: "Student Community", href: "#" },
   ],
   company: [
-    { name: "About", href: "/about" },
-    { name: "Blog", href: "/blog" },
-    { name: "Careers", href: "/careers" },
-    { name: "Contact", href: "/contact" },
+    { name: "About Us", href: "/about" },
+    { name: "Our Mentors", href: "#creators" },
+    { name: "Careers", href: "#" },
+    { name: "News & Articles", href: "#" },
+    { name: "Partner With Us", href: "#" },
   ],
-  legal: [
-    { name: "Privacy", href: "/privacy" },
-    { name: "Terms", href: "/terms" },
-    { name: "Cookie Policy", href: "/cookies" },
-    { name: "Licenses", href: "/licenses" },
+  support: [
+    { name: "Help Center", href: "#" },
+    { name: "FAQs", href: "#" },
+    { name: "Contact Support", href: "#" },
+    { name: "Terms of Service", href: "#" },
+    { name: "Privacy Policy", href: "#" },
   ],
 };
 
 const socialLinks = [
-  { name: "Facebook", href: "#", icon: FacebookIcon },
-  { name: "Github", href: "#", icon: Github },
+  { name: "Twitter", href: "#", icon: Twitter },
   { name: "LinkedIn", href: "#", icon: Linkedin },
-  { name: "Email", href: "#", icon: Mail },
+  { name: "Github", href: "#", icon: Github },
+  { name: "Facebook", href: "#", icon: Facebook },
 ];
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   return (
-    // Footer Component
-    <footer className="border-t bg-background w-full mx-auto">
-      {/* Main Div */}
-      <div className="max-w-7xl mx-auto py-12 md-py-16 px-6">
-        {/* Logo and description */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="text-lg font-bold">
-              <span className="text-2xl font-bold">Logo</span>
-            </Link>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Building exceptional digital experiences that make a difference.
+    <footer className="bg-[#0A0F1D] text-gray-400 border-t border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
+          {/* Brand Column */}
+          <div className="lg:col-span-4">
+            <Logo variant="light" />
+            <p className="mt-4 text-sm text-gray-400 leading-relaxed max-w-sm">
+              ByteSpace is an industry-leading learning platform designed to accelerate creative, engineering, and digital marketing careers worldwide.
             </p>
-            {/* Social Links */}
-            <div className="flex gap-4 mt-6">
-              {socialLinks.map((social) => (
-                <Link
-                  key={social.name}
-                  href={social.href}
-                  className="mr-4 text-muted-foreground hover:text-primary transition"
-                >
-                  <social.icon className="h-5 w-5" />
-                  <span className="sr-only">{social.name}</span>
-                </Link>
-              ))}
+
+            <div className="flex items-center gap-3 mt-6">
+              {socialLinks.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    aria-label={item.name}
+                    className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-[#CCFF00] hover:border-[#CCFF00]/40 transition-colors"
+                  >
+                    <Icon className="w-4 h-4" />
+                  </Link>
+                );
+              })}
             </div>
           </div>
 
-          {/* Footer Links */}
-          <div>
-            <h3 className="font-semibold mb-4">Product</h3>
-            <ul className="space-y-3">
-              {footerLinks.product.map((productLink) => (
-                <li key={productLink.name}>
+          {/* Links Columns */}
+          <div className="lg:col-span-2">
+            <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">
+              Explore
+            </h3>
+            <ul className="space-y-2.5">
+              {footerLinks.explore.map((link) => (
+                <li key={link.name}>
                   <Link
-                    href={productLink.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    href={link.href}
+                    className="text-sm text-gray-400 hover:text-white transition-colors"
                   >
-                    {productLink.name}
+                    {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Company Links */}
-          <div>
-            <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((companyLink) => (
-                <li key={companyLink.name}>
+          <div className="lg:col-span-2">
+            <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">
+              Company
+            </h3>
+            <ul className="space-y-2.5">
+              {footerLinks.company.map((link) => (
+                <li key={link.name}>
                   <Link
-                    href={companyLink.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    href={link.href}
+                    className="text-sm text-gray-400 hover:text-white transition-colors"
                   >
-                    {companyLink.name}
+                    {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-          {/* Legal Links */}
-          <div>
-            <h3 className="font-semibold mb-4">Legal</h3>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((legalLink) => (
-                <li key={legalLink.name}>
-                  <Link
-                    href={legalLink.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {legalLink.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+
+          {/* Newsletter Column */}
+          <div className="lg:col-span-4">
+            <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">
+              Stay in the Loop
+            </h3>
+            <p className="text-sm text-gray-400 mb-4">
+              Subscribe to get latest course discounts, tech roadmaps, and free learning resources.
+            </p>
+
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="flex items-center bg-white/5 border border-white/10 rounded-2xl p-1.5 focus-within:border-blue-500 transition-colors"
+            >
+              <div className="flex items-center flex-1 px-3 gap-2">
+                <Mail className="w-4 h-4 text-gray-400" />
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="bg-transparent text-sm text-white placeholder-gray-500 outline-none w-full"
+                />
+              </div>
+              <button
+                type="submit"
+                className="bg-[#CCFF00] hover:bg-[#bcf200] text-black font-semibold text-xs sm:text-sm px-4 py-2 rounded-xl transition cursor-pointer flex items-center gap-1"
+              >
+                <span>Join</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </form>
           </div>
         </div>
 
-        {/* copyright  */}
-        <div className="mt-12 pt-4 border-t">
-          <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()}. All rights reserved.
-          </p>
+        {/* Bottom Bar */}
+        <div className="mt-14 pt-8 border-t border-gray-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+          <p>© {new Date().getFullYear()} ByteSpace Inc. All rights reserved.</p>
+          <div className="flex items-center gap-6">
+            <Link href="#" className="hover:text-gray-400 transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="#" className="hover:text-gray-400 transition-colors">
+              Terms of Service
+            </Link>
+            <Link href="#" className="hover:text-gray-400 transition-colors">
+              Security
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
