@@ -2,151 +2,118 @@
 
 import React from "react";
 import Link from "next/link";
-import { Facebook, Github, Linkedin, Twitter, Mail, ArrowRight } from "lucide-react";
 import { Logo } from "../Navbar/Logo";
 
-const footerLinks = {
-  explore: [
-    { name: "Top Courses", href: "#courses" },
-    { name: "Design Mentorship", href: "#" },
-    { name: "Full-Stack Bootcamp", href: "#" },
-    { name: "Certifications", href: "#" },
-    { name: "Student Community", href: "#" },
-  ],
-  company: [
-    { name: "About Us", href: "/about" },
-    { name: "Our Mentors", href: "#creators" },
-    { name: "Careers", href: "#" },
-    { name: "News & Articles", href: "#" },
-    { name: "Partner With Us", href: "#" },
-  ],
-  support: [
-    { name: "Help Center", href: "#" },
-    { name: "FAQs", href: "#" },
-    { name: "Contact Support", href: "#" },
-    { name: "Terms of Service", href: "#" },
-    { name: "Privacy Policy", href: "#" },
-  ],
-};
+const footerNavColumns = [
+  {
+    links: [
+      { name: "Featured Courses", href: "#courses" },
+      { name: "Featured Categories", href: "#categories" },
+      { name: "Business", href: "#business" },
+      { name: "IT", href: "#it" },
+      { name: "Design", href: "#design" },
+    ],
+  },
+  {
+    links: [
+      { name: "Development", href: "#development" },
+      { name: "Marketing", href: "#marketing" },
+      { name: "Photography", href: "#photography" },
+      { name: "Finance", href: "#finance" },
+      { name: "Sport", href: "#sport" },
+    ],
+  },
+  {
+    links: [
+      { name: "Become a Creator", href: "#creator" },
+      { name: "Affiliate Program", href: "#affiliate" },
+      { name: "Contact", href: "#contact" },
+      { name: "Help", href: "#help" },
+      { name: "About", href: "#about" },
+    ],
+  },
+];
 
-const socialLinks = [
-  { name: "Twitter", href: "#", icon: Twitter },
-  { name: "LinkedIn", href: "#", icon: Linkedin },
-  { name: "Github", href: "#", icon: Github },
-  { name: "Facebook", href: "#", icon: Facebook },
+const legalLinks = [
+  { name: "Privacy Policy", href: "#privacy" },
+  { name: "Terms of Service", href: "#terms" },
+  { name: "Cookies Settings", href: "#cookies" },
 ];
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#0A0F1D] text-gray-400 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
-          {/* Brand Column */}
-          <div className="lg:col-span-4">
-            <Logo variant="light" />
-            <p className="mt-4 text-sm text-gray-400 leading-relaxed max-w-sm">
-              ByteSpace is an industry-leading learning platform designed to accelerate creative, engineering, and digital marketing careers worldwide.
-            </p>
-
-            <div className="flex items-center gap-3 mt-6">
-              {socialLinks.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    aria-label={item.name}
-                    className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-[#CCFF00] hover:border-[#CCFF00]/40 transition-colors"
-                  >
-                    <Icon className="w-4 h-4" />
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Links Columns */}
-          <div className="lg:col-span-2">
-            <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">
-              Explore
-            </h3>
-            <ul className="space-y-2.5">
-              {footerLinks.explore.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-gray-400 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="lg:col-span-2">
-            <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">
-              Company
-            </h3>
-            <ul className="space-y-2.5">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-gray-400 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Newsletter Column */}
-          <div className="lg:col-span-4">
-            <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">
-              Stay in the Loop
-            </h3>
-            <p className="text-sm text-gray-400 mb-4">
-              Subscribe to get latest course discounts, tech roadmaps, and free learning resources.
+    <footer className="bg-white text-gray-900 border-t border-gray-100">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-16 sm:pt-20 pb-10">
+        <div className="flex flex-col lg:flex-row justify-between gap-12 lg:gap-16 xl:gap-24">
+          {/* Brand & Newsletter Column */}
+          <div className="max-w-xl">
+            <Logo variant="dark" />
+            
+            <p className="mt-5 text-sm sm:text-base text-gray-700 leading-relaxed font-satoshi">
+              Stay Up to date with our latest features and releases by joining our newsletter.
             </p>
 
             <form
               onSubmit={(e) => e.preventDefault()}
-              className="flex items-center bg-white/5 border border-white/10 rounded-2xl p-1.5 focus-within:border-blue-500 transition-colors"
+              className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 max-w-lg"
             >
-              <div className="flex items-center flex-1 px-3 gap-2">
-                <Mail className="w-4 h-4 text-gray-400" />
+              <div className="relative flex-1">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="bg-transparent text-sm text-white placeholder-gray-500 outline-none w-full"
+                  className="w-full px-6 py-3 rounded-full border border-gray-300 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#CCFF00] focus:border-gray-400 font-satoshi transition-all bg-white"
                 />
               </div>
               <button
                 type="submit"
-                className="bg-[#CCFF00] hover:bg-[#bcf200] text-black font-semibold text-xs sm:text-sm px-4 py-2 rounded-xl transition cursor-pointer flex items-center gap-1"
+                className="bg-[#CCFF00] hover:bg-[#bcf200] active:scale-95 transition-all text-black font-semibold text-sm px-8 py-3 rounded-full cursor-pointer font-satoshi shadow-xs whitespace-nowrap"
               >
-                <span>Join</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                Search
               </button>
             </form>
+
+            <p className="mt-4 text-xs text-gray-500 leading-relaxed font-satoshi max-w-md">
+              By subscribing, you agree to our{" "}
+              <Link href="#privacy" className="underline hover:text-gray-800 transition-colors">
+                Privacy Policy
+              </Link>{" "}
+              and consent to receive updates from our company.
+            </p>
+          </div>
+
+          {/* Navigation Links Columns */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-12 lg:gap-14 xl:gap-20">
+            {footerNavColumns.map((col, idx) => (
+              <ul key={idx} className="space-y-4">
+                {col.links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-sm sm:text-[15px] text-gray-800 hover:text-blue-600 font-normal font-satoshi transition-colors inline-block"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ))}
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-14 pt-8 border-t border-gray-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-          <p>© {new Date().getFullYear()} ByteSpace Inc. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <Link href="#" className="hover:text-gray-400 transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="hover:text-gray-400 transition-colors">
-              Terms of Service
-            </Link>
-            <Link href="#" className="hover:text-gray-400 transition-colors">
-              Security
-            </Link>
+        {/* Bottom Legal / Copyright Bar */}
+        <div className="mt-16 sm:mt-20 pt-8 border-t border-gray-200/90 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-gray-600 font-satoshi">
+          <p>© 2023 ByteSpace. All rights reserved.</p>
+
+          <div className="flex items-center gap-6 sm:gap-8">
+            {legalLinks.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-gray-700 hover:text-black transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
