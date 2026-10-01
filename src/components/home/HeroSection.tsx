@@ -190,12 +190,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.45 }}
             className="absolute z-20 text-left
-                       left-[1%] sm:left-[3%] md:left-[5%] lg:left-[7%] xl:left-[30%]
-                       top-[4%] sm:top-[7%] lg:top-[20%]
-                       bg-white rounded-2xl px-5 py-4 sm:px-6 sm:py-5 shadow-2xl border border-gray-100/80"
+                       left-2 sm:left-[5%] md:left-[10%] lg:left-[18%] xl:left-[27%]
+                       top-[3%] sm:top-[6%] md:top-[12%] lg:top-[18%] xl:top-[20%]
+                       bg-white rounded-xl sm:rounded-2xl
+                       px-3.5 py-2.5 sm:px-5 sm:py-3.5 md:px-6 md:py-4
+                       shadow-xl sm:shadow-2xl border border-gray-100/80"
           >
-            <p className="text-gray-900 font-bold text-sm sm:text-base">UI/UX Design</p>
-            <p className="text-gray-500 text-xs sm:text-sm mt-1 font-medium">200 Courses • 1000+ Students</p>
+            <p className="text-gray-900 font-bold text-xs sm:text-sm md:text-base">UI/UX Design</p>
+            <p className="text-gray-500 text-[10px] sm:text-xs md:text-sm mt-0.5 sm:mt-1 font-medium">200 Courses • 1000+ Students</p>
           </motion.div>
 
           {/* Card 2: Learning Progress */}
@@ -204,14 +206,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.55 }}
             className="absolute z-20 text-left
-                       right-[1%] sm:right-[3%] md:right-[5%] lg:right-[7%] xl:right-[30%]
-                       top-[12%] sm:top-[17%] lg:top-[20%]
-                       bg-white rounded-2xl px-5 py-4 sm:px-7 sm:py-5 shadow-2xl border border-gray-100/80
-                       min-w-[170px] sm:min-w-[210px] lg:min-w-[230px]"
+                       right-2 sm:right-[5%] md:right-[10%] lg:right-[18%] xl:right-[27%]
+                       top-[14%] sm:top-[16%] md:top-[18%] lg:top-[20%] xl:top-[20%]
+                       bg-white rounded-xl sm:rounded-2xl
+                       px-3.5 py-2.5 sm:px-5 sm:py-3.5 md:px-7 md:py-5
+                       shadow-xl sm:shadow-2xl border border-gray-100/80
+                       min-w-[130px] sm:min-w-[170px] md:min-w-[200px] lg:min-w-[230px]"
           >
-            <p className="text-gray-500 text-xs sm:text-sm font-medium">Learning Progress</p>
-            <p className="text-gray-950 font-black text-3xl sm:text-4xl mt-1 leading-none">55%</p>
-            <div className="w-full bg-gray-100 rounded-full h-2 mt-3 overflow-hidden">
+            <p className="text-gray-500 text-[10px] sm:text-xs md:text-sm font-medium">Learning Progress</p>
+            <p className="text-gray-950 font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-0.5 sm:mt-1 leading-none">55%</p>
+            <div className="w-full bg-gray-100 rounded-full h-1.5 sm:h-2 mt-2 sm:mt-3 overflow-hidden">
               <div className="bg-[#CCFF00] h-full rounded-full w-[55%]" />
             </div>
           </motion.div>
@@ -222,17 +226,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.65 }}
             className="absolute z-20 text-left
-                       left-[1%] sm:left-[3%] md:left-[5%] lg:left-[7%] xl:left-[28%]
-                       bottom-[6%] sm:bottom-[9%] lg:bottom-[12%]
-                       bg-white rounded-2xl px-5 py-4 sm:px-6 sm:py-5 shadow-2xl border border-gray-100/80"
+                       left-2 sm:left-[5%] md:left-[10%] lg:left-[17%] xl:left-[26%]
+                       bottom-[4%] sm:bottom-[6%] md:bottom-[9%] lg:bottom-[11%] xl:bottom-[12%]
+                       bg-white rounded-xl sm:rounded-2xl
+                       px-3.5 py-2.5 sm:px-5 sm:py-3.5 md:px-6 md:py-5
+                       shadow-xl sm:shadow-2xl border border-gray-100/80"
           >
-            <div className="flex items-center justify-between gap-4">
-              <span className="text-gray-900 font-bold text-sm sm:text-base">Happy Students</span>
-              <span className="text-amber-500 font-bold text-xs sm:text-sm flex items-center gap-0.5">
-                4.5 ★<span className="text-gray-400 font-normal text-xs ml-0.5">(240)</span>
+            <div className="flex items-center justify-between gap-3 sm:gap-4">
+              <span className="text-gray-900 font-bold text-xs sm:text-sm md:text-base">Happy Students</span>
+              <span className="text-amber-500 font-bold text-[10px] sm:text-xs md:text-sm flex items-center gap-0.5">
+                4.5 ★<span className="text-gray-400 font-normal text-[9px] sm:text-xs ml-0.5">(240)</span>
               </span>
             </div>
-            <div className="flex items-center -space-x-2 mt-2.5">
+            <div className="flex items-center -space-x-1.5 sm:-space-x-2 mt-2 sm:mt-2.5">
               {[
                 "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80",
                 "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80",
@@ -240,25 +246,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
                 "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&h=80&q=80",
                 "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&h=80&q=80",
               ].map((src, i) => (
-                <Image key={i} src={src} alt={`Student avatar ${i + 1}`} width={30} height={30} className="rounded-full ring-2 ring-white object-cover w-7 h-7 sm:w-8 sm:h-8" />
+                <Image key={i} src={src} alt={`Student avatar ${i + 1}`} width={30} height={30} className="rounded-full ring-2 ring-white object-cover w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
               ))}
-              <span className="inline-flex items-center justify-center h-7 w-7 sm:h-8 sm:w-8 rounded-full ring-2 ring-white bg-[#CCFF00] text-[10px] font-bold text-black">
+              <span className="inline-flex items-center justify-center h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 rounded-full ring-2 ring-white bg-[#CCFF00] text-[9px] sm:text-[10px] font-bold text-black">
                 2K+
               </span>
             </div>
           </motion.div>
 
-                  {/* LEFT BOTTOM: White Donut Ring */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.1, delay: 0.3 }}
-          className="absolute -left-4 sm:left-6 md:left-10 lg:left-16 xl:left-65
-                     bottom-0 sm:bottom-4 lg:bottom-8
-                     w-32 sm:w-48 md:w-60 lg:w-72 xl:w-80 z-20"
-        >
-          <Image src="/images/doodles/white-circel.svg" alt="White ring" width={320} height={320} className="w-full h-auto drop-shadow-2xl" />
-        </motion.div>
+          {/* LEFT BOTTOM: White Donut Ring */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.1, delay: 0.3 }}
+            className="absolute -left-6 sm:left-4 md:left-10 lg:left-24 xl:left-43
+                       bottom-0 sm:bottom-4 lg:bottom-8
+                       w-32 sm:w-48 md:w-60 lg:w-72 xl:w-80 z-20 pointer-events-none select-none"
+          >
+            <Image src="/images/doodles/white-circel.svg" alt="White ring" width={320} height={320} className="w-full h-auto drop-shadow-2xl" />
+          </motion.div>
 
         </div>
       </div>
