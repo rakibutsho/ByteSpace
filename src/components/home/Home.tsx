@@ -6,6 +6,7 @@ import { PartnerBanner } from "./PartnerBanner";
 import { TopCoursesSection } from "./TopCoursesSection";
 import { LearningPathsSection } from "./LearningPathsSection";
 import { CommunityStatsSection } from "./CommunityStatsSection";
+import { CTASection } from "./CTASection";
 import { TestimonialsSection } from "./TestimonialsSection";
 
 function Home() {
@@ -23,11 +24,16 @@ function Home() {
       {/* 4. Explore Diverse Learning Paths */}
       <LearningPathsSection />
 
-      {/* 5. Community Stats & CTA Banner */}
+      {/* 5. Professional Growth & Course Creation Features */}
       <CommunityStatsSection />
 
-      {/* 6. Real Student Testimonials */}
+      {/* 6. Extracted Call-To-Action Banner */}
+      <CTASection />
+
+      {/* 7. Real Student Testimonials */}
       <TestimonialsSection />
+
+
     </main>
   );
 }
